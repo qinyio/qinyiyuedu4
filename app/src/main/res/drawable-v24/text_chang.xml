@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--获取焦点为该图片-->
+    <item android:drawable="@drawable/ic_launcher_background" android:state_selected="true"/>
+    <!--失去焦点为该图片-->
+    <item android:drawable="@drawable/ic_launcher_foreground"/>
+</selector>

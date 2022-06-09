@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/sj_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/sj_image"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/shuji" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:id="@+id/sj_name"
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:gravity="center_vertical"
+                android:text="书籍名字"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/sj_zuozhe"
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:gravity="center_vertical"
+                android:text="作者"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/sj_shuqian"
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:gravity="center_vertical"
+                android:text="读至"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/sj_zuixinzhangjie"
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:gravity="center_vertical"
+                android:text="最新章节"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/sj_linearlayout"
+        android:background="#C3000000" />
+
+</RelativeLayout>

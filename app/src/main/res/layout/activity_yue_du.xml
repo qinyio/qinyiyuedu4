@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/yuedu_DrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.YueDuActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/yuedu_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="#EDCED67C"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/yuedu_textview_shangyizhang"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="上一章"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/yuedu_textview_mulu"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="目录"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/yuedu_textview_tiaojie"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="调节"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/yuedu_textview_xiayizhang"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="下一章"
+                android:textColor="#000000" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/yuedu_linearlayout_tiaojie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/yuedu_linearlayout"
+            android:background="#EDCED67C"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="亮度"
+                    android:textColor="#DF000000"
+                    android:textSize="16sp" />
+
+                <SeekBar
+                    android:id="@+id/yuedu_seekbar_liangdu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="字号"
+                        android:textColor="#DF000000"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/yuedu_textview_jian"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="减"
+                        android:textColor="#DF000000"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/yuedu_textview_zihao"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="20" />
+
+                    <TextView
+                        android:id="@+id/yuedu_textview_jia"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="加"
+                        android:textColor="#DF000000" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/yuedu_textview_zise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="字色"
+                        android:textColor="#DF000000" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_zise_hei"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/yuedu_textview_zise"
+                        android:background="@drawable/item_button_heise" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_zise_hui"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/yuedu_button_zise_hei"
+                        android:background="@drawable/item_button_huise" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_zise_bai"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/yuedu_button_zise_hui"
+                        android:background="@drawable/item_button_baise" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_zise_cheng"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/yuedu_button_zise_hei"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/yuedu_textview_zise"
+                        android:background="@drawable/item_button_chengse" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_zise_lv"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/yuedu_button_zise_hei"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/yuedu_button_zise_cheng"
+                        android:background="@drawable/item_button_lvse" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_zise_lan"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/yuedu_button_zise_hei"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/yuedu_button_zise_lv"
+                        android:background="@drawable/item_button_lanse" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/yuedu_textview_beise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="背色"
+                        android:textColor="#DF000000" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_beise_hei"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/yuedu_textview_beise"
+                        android:background="@drawable/item_button_heise" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_beise_hui"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/yuedu_button_beise_hei"
+                        android:background="@drawable/item_button_huise" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_beise_bai"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/yuedu_button_beise_hui"
+                        android:background="@drawable/item_button_baise" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_beise_cheng"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/yuedu_button_beise_hei"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/yuedu_textview_beise"
+                        android:background="@drawable/item_button_chengse" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_beise_lv"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/yuedu_button_beise_hei"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/yuedu_button_beise_cheng"
+                        android:background="@drawable/item_button_lvse" />
+
+                    <Button
+                        android:id="@+id/yuedu_button_beise_lan"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/yuedu_button_beise_hei"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/yuedu_button_beise_lv"
+                        android:background="@drawable/item_button_lanse" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/yuedu_textview_txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/yuedu_linearlayout_tiaojie"
+            android:background="#ffffff"
+            android:textColor="#000000" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#EDCED67C">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/yuedu_cehua_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

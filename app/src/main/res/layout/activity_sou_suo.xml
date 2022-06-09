@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".activity.SouSuoActivity">
+
+
+    <EditText
+        android:id="@+id/sousuo_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_weight="8"
+        android:background="@drawable/item_edittext"
+        android:hint="搜索书名、作者"
+        android:imeOptions="actionSearch"
+        android:maxLines="1"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/sousuo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_weight="1"
+        android:background="@drawable/button_selector"
+        android:text="搜索" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sousuo_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/sousuo_edittext" />
+
+
+</RelativeLayout>

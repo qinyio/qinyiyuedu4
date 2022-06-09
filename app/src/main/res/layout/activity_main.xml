@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_drawerlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".activity.MainActivity">
+
+    <!--主界面-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/main_textview_name"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="慬臆阅读"
+            android:textColor="#000000"
+            android:textSize="42sp" />
+
+        <LinearLayout
+            android:id="@+id/main_linearlayout_sousuo"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/main_textview_name"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/main_textview_caidan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/caidan" />
+
+            <EditText
+                android:id="@+id/main_edittext_sousuo"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_weight="7"
+                android:background="@drawable/item_edittext1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="搜索书名、作者" />
+
+            <TextView
+                android:id="@+id/main_textview_caidan2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/youcaidan" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_linearlayout_huadong"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/main_linearlayout_sousuo"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/main_textview_shujia"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/text_chang"
+                android:gravity="center"
+                android:text="书架"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/main_textview_shucheng"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/text_chang"
+                android:gravity="center"
+                android:text="书城"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/main_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/main_linearlayout_huadong" />
+
+
+    </RelativeLayout>
+
+
+    <!--侧滑栏布局-->
+    <LinearLayout
+        android:id="@+id/main_linearlayout_cehualan"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_cehualan" />
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
