@@ -1,6 +1,8 @@
 package com.example.qinyiyuedu4.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +23,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.qinyiyuedu4.R;
+import com.example.qinyiyuedu4.ViewModel.SharedViewModel;
 import com.example.qinyiyuedu4.adapter.SouSuoRecyclerViewAdapter;
 import com.example.qinyiyuedu4.pojo.Book;
 import com.example.qinyiyuedu4.pojo.Content;
@@ -38,6 +41,8 @@ public class YeuDuJiLuActivity extends AppCompatActivity {
     private SouSuoRecyclerViewAdapter mAdapter;
     private PopupWindow popupWindow;
     private ContentValues values1;
+    private SharedViewModel model;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,10 @@ public class YeuDuJiLuActivity extends AppCompatActivity {
         initjilu();
         //
         initRecyclerview();
+        //通过ViewModel通知书架更新
+        model = new ViewModelProvider(this).get(SharedViewModel.class);
     }
+
 
     private void initRecyclerview() {
         //创建布局管理器
@@ -185,6 +193,7 @@ public class YeuDuJiLuActivity extends AppCompatActivity {
                 values.put("shuqian", 0);
                 values.put("duzhi", 0);
 
+                model.select("gengxin");
                 db_shuji.insert(Book.TABLE_NAME_SHU_JI, null, values);
                 //关闭
                 db_shuji.close();
@@ -192,8 +201,6 @@ public class YeuDuJiLuActivity extends AppCompatActivity {
                 popupWindow_button_jiaru.setText("已加入书架");
             }
         });
-
-
     }
 
     private void backgroundAlpha(float f) {

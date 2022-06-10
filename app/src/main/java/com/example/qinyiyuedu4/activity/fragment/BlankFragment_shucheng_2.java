@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +32,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.qinyiyuedu4.R;
+import com.example.qinyiyuedu4.ViewModel.SharedViewModel;
 import com.example.qinyiyuedu4.activity.MainActivity;
 import com.example.qinyiyuedu4.activity.YueDuActivity;
 import com.example.qinyiyuedu4.adapter.ShuCheng2RecyclerViewAdapter;
@@ -65,6 +67,9 @@ public class BlankFragment_shucheng_2 extends Fragment {
     private SQLiteDatabase db_shuji;
     private boolean TF;
 
+    private SharedViewModel model;
+
+
 
     public BlankFragment_shucheng_2() {
     }
@@ -91,6 +96,8 @@ public class BlankFragment_shucheng_2 extends Fragment {
             }
         }).start();
 
+        //通过ViewModel通知书架更新
+        model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
         //找到控件
         initViews();
@@ -229,11 +236,7 @@ public class BlankFragment_shucheng_2 extends Fragment {
 
     }
 
-    private MainActivity.Fragment1CallBack fragment1CallBack;
     private void popupWindowBindingOnclick(int position, View contentView) {
-
-        fragment1CallBack.buttonClick1();
-
 
         ImageView popupWindow_image = contentView.findViewById(R.id.popupWindow_image);
         Glide.with(getContext()).load(mData.get(position).getImg()).into(popupWindow_image);
@@ -286,6 +289,8 @@ public class BlankFragment_shucheng_2 extends Fragment {
                 databaseHelperShuJiJilu.close();
             }
         });
+
+
         //点击加入
         popupWindow_button_jiaru.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -311,12 +316,13 @@ public class BlankFragment_shucheng_2 extends Fragment {
                     values.put("shuqian", 0);
                     values.put("duzhi", 0);
                     db_shuji.insert(Book.TABLE_NAME_SHU_JI, null, values);
+                    //通过ViewModel通知书架更新
+                    model.select("gengxin");
                 }
                 //关闭
                 db_shuji.close();
                 databaseHelper_shu_ji.close();
                 popupWindow_button_jiaru.setText("已加入书架");
-                ;
 
             }
         });

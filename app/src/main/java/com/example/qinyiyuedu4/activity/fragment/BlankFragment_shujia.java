@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +31,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.qinyiyuedu4.R;
+import com.example.qinyiyuedu4.ViewModel.SharedViewModel;
 import com.example.qinyiyuedu4.activity.MainActivity;
 import com.example.qinyiyuedu4.activity.YueDuActivity;
 import com.example.qinyiyuedu4.adapter.ShuJiaRecyclerViewAdapter;
@@ -96,11 +98,8 @@ public class BlankFragment_shujia extends Fragment {
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-               gengxinshujuku();
-                //加载完成,让转圈停止
-                Message message = new Message();
-                message.what = 0111;
-                handler.sendMessage(message);
+              //对书架书籍信息进行更新
+                refreshLayout.finishRefresh();
             }
         });
 
@@ -335,6 +334,19 @@ public class BlankFragment_shujia extends Fragment {
         databaseHelper_shu_ji.close();
     }
 
+    //接收ViewModel信息进行书架更新
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        SharedViewModel model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        model.getSelected().observe(getViewLifecycleOwner(), item -> {
+            gengxinshujuku();
+            //加载完成,让转圈停止
+            Message message = new Message();
+            message.what = 0111;
+            handler.sendMessage(message);
+        });
+    }
+
     //处理信息
     public Handler handler = new Handler(Looper.getMainLooper()) {
         @SuppressLint("HandlerLeak")
@@ -342,21 +354,9 @@ public class BlankFragment_shujia extends Fragment {
             switch (msg.what){
                 case 0111:
                     initRecyclerView();
-                    //下拉刷新停止
-                    refreshLayout.finishRefresh();
                     break;
             }
         }
     };
 
-}
-
-//接收广播
-class Guangbo extends BroadcastReceiver{
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        System.out.println("接收到广播");
-
-
-    }
 }

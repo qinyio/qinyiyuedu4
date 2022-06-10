@@ -1,6 +1,7 @@
 package com.example.qinyiyuedu4.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +27,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.qinyiyuedu4.R;
+import com.example.qinyiyuedu4.ViewModel.SharedViewModel;
 import com.example.qinyiyuedu4.adapter.SouSuoRecyclerViewAdapter;
 import com.example.qinyiyuedu4.html.Html_ShuJIXinXI;
 import com.example.qinyiyuedu4.pojo.Book;
@@ -48,6 +50,7 @@ public class SouSuoActivity extends AppCompatActivity {
     private DatabaseHelper_shu_ji_ji_lu databaseHelperShuJiJilu;
     private SQLiteDatabase db_shu_ji_ji_lu;
     private ContentValues values;
+    private SharedViewModel model;
 
 
     @Override
@@ -57,6 +60,9 @@ public class SouSuoActivity extends AppCompatActivity {
 
         //找到控件,点击事件
         initViews();
+
+        //通过ViewModel通知书架更新
+        model = new ViewModelProvider(this).get(SharedViewModel.class);
 
     }
 
@@ -239,6 +245,9 @@ public class SouSuoActivity extends AppCompatActivity {
                 //第一次添加书签定到第一章
                 values.put("shuqian", 0);
                 values.put("duzhi", 0);
+
+                //通过ViewModel通知书架更新
+                model.select("gengxin");
 
                 db_shuji.insert(Book.TABLE_NAME_SHU_JI, null, values);
                 //关闭
